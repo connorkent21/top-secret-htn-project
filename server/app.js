@@ -22,9 +22,6 @@ const app = express();
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-const encountersRouter = require('./routes/encounters');
-const authRouter = require('./routes/auth');
-
 app.use(logger('dev'));
 app.use(cors());
 app.use(express.json());
@@ -32,7 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/encounters', tp.authenticateToken, encountersRouter);
-app.use('/auth', authRouter);
+// app.use('/encounters', tp.authenticateToken, encountersRouter);
+// app.use('/auth', authRouter);
 
 module.exports = app;

@@ -17,7 +17,3 @@ create-tables:
 .PHONY: run
 run: 
 	npm run server
-
-.PHONY: copy-s3
-copy-s3:
-	aws s3 sync s3://vs-tech s3://vs-tech-dev

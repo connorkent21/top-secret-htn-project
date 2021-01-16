@@ -1,5 +1,4 @@
 const dynamoose = require('dynamoose');
-const Unit = require('./units');
 const { v4: uuidv4 } = require('uuid');
 
 const UserSchema = new dynamoose.Schema(
@@ -7,7 +6,6 @@ const UserSchema = new dynamoose.Schema(
     id: {
       type: String,
       hashKey: true,
-      default: uuidv4(),
     },
     firstName: String,
     lastName: String,

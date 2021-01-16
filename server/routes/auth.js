@@ -8,7 +8,7 @@ router.post('/login', async (req, res, next) => {
   const { loginId, password } = req.body;
 
   // Get credentials doc for loginId
-  const credentials = await Credentials.query('LoginId')
+  const credentials = await Credentials.query('loginId')
     .eq(loginId)
     .exec()
     .catch((err) => {
@@ -29,7 +29,7 @@ router.post('/login', async (req, res, next) => {
   if (!passwordIsValid) {
     res.status(401);
   } else {
-    const token = tp.generateToken(credentials[0].User.Id);
+    const token = tp.generateToken(credentials[0].user.id);
     res.json({ token });
   }
   res.send();

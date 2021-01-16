@@ -12,7 +12,9 @@ const credentialsTable = JSON.parse(
 const homiecirclesTable = JSON.parse(
   fs.readFileSync('homiecircles.json', 'utf8')
 );
-const usersTable = JSON.parse(fs.readFileSync('users.json', 'utf8'));
+const usersTable = JSON.parse(
+  fs.readFileSync('users.json', 'utf8')
+);
 
 const allTables = [credentialsTable, homiecirclesTable, usersTable];
 

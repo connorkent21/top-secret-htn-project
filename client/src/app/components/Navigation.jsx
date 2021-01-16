@@ -66,6 +66,10 @@ const Navigation = () => {
   const [user] = useUser();
   const classes = styles();
 
+  handleClick = () => {
+    console.log('sicko mode');
+  };
+
   console.log('this is the user: ', user);
 
   return (
@@ -90,6 +94,9 @@ const Navigation = () => {
               Sign up
             </Button>
           </Link>
+          <Button variant="contained" color="primary" onClick={handleClick}>
+            TEST
+          </Button>
         </nav>
       </Toolbar>
     </AppBar>

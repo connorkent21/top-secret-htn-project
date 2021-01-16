@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 const Credentials = require('../models/credentials');
+const Users = require('../models/users');
 const tp = require('../middleware/TokenProcessor');
 
 router.post('/login', async (req, res, next) => {
@@ -37,6 +38,15 @@ router.post('/login', async (req, res, next) => {
 
 router.get('/info', tp.authenticateToken, (req, res, next) => {
   res.sendStatus(200);
+});
+
+router.get('/user', tp.authenticateToken, (req, res, next) => {
+  const { userId } = req.body;
+  Users.query('id')
+    .eq(userId)
+    .exec()
+    .then((user) => res.json(user))
+    .catch((err) => next(err));
 });
 
 module.exports = router;

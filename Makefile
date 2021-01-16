@@ -16,4 +16,4 @@ create-tables:
 
 .PHONY: run
 run: 
-	npm run server
+	npm run server && cd client && npm run start

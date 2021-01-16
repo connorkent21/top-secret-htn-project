@@ -14,6 +14,3 @@ dbclient:
 create-tables:
 	cd ./server/config/tables && node createTables.js
 
-.PHONY: run
-run: 
-	npm run server && cd client && npm run start

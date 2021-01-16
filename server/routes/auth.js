@@ -4,7 +4,7 @@ const router = express.Router();
 const Credentials = require('../models/credentials');
 const tp = require('../middleware/TokenProcessor');
 
-router.post('/api/login', async (req, res, next) => {
+router.post('/login', async (req, res, next) => {
   const { loginId, password } = req.body;
 
   // Get credentials doc for loginId
@@ -35,7 +35,7 @@ router.post('/api/login', async (req, res, next) => {
   res.send();
 });
 
-router.get('/api/info', tp.authenticateToken, (req, res, next) => {
+router.get('/info', tp.authenticateToken, (req, res, next) => {
   res.sendStatus(200);
 });
 

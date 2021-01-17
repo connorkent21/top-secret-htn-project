@@ -8,8 +8,9 @@ import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import useUser from '../../hooks/useUser';
 
 import { makeStyles } from '@material-ui/core/styles';
+import { GetMoviesByGenre } from '../../api/Movies';
 
-const styles = makeStyles((theme) => ({
+const styles = makeStyles(theme => ({
   link: {
     margin: theme.spacing(1, 1.5),
   },
@@ -66,8 +67,9 @@ const Navigation = () => {
   const [user] = useUser();
   const classes = styles();
 
-  handleClick = () => {
-    console.log('sicko mode');
+  const handleClick = () => {
+    const res = GetMoviesByGenre();
+    console.log('res from server: ', res);
   };
 
   console.log('this is the user: ', user);

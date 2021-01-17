@@ -14,6 +14,20 @@ const HomieCircleSchema = new dynamoose.Schema(
       type: Set,
       schema: [User], // Set is only valid if `User` does not have a `rangeKey`
     },
+    genres: {
+      type: Set,
+      schema: [Number],
+    },
+    // Stores the current queried page from moviesdb
+    page: {
+      type: Number,
+      schema: [Number],
+    },
+    // Stores the json data from the queried page
+    page: {
+      type: Object,
+      schema: [Object],
+    },
   },
   {
     timestamps: {

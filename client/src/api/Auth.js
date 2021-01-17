@@ -36,3 +36,20 @@ export async function GetUser() {
     return null;
   }
 }
+
+export async function Signup(loginId, password) {
+  const data = {
+    loginId,
+    password,
+  };
+  let res = await spaxios.post('/auth/signup', data).catch((err) => err);
+  console.log('this is the res: ', res);
+  if (res && res.status === 200) {
+    if (res.userCreated) {
+      await LoginUser(loginId, password, false);
+      return { usernameTaken: false };
+    }
+    return { usenameTaken: true };
+  }
+  return 401;
+}

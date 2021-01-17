@@ -49,4 +49,26 @@ router.get('/user', tp.authenticateToken, (req, res, next) => {
     .catch((err) => next(err));
 });
 
+router.post('/signup', async (req, res, next) => {
+  const { loginId, password } = req.body;
+
+  // Check for existing users with requested username
+  const users = await Users.query('id').eq(loginId).exec();
+  console.log('this is the user: ', users.length);
+  if (users.length) {
+    res.json({ usernameTaken: true });
+  }
+
+  // generate a password
+  const hashedPass = await b.hash(password, 10);
+  const newUser = new Users({
+    id: loginId,
+  });
+  newUser.save();
+
+  const newCredentials = new Credentials({
+    loginId: loginId,
+  });
+});
+
 module.exports = router;

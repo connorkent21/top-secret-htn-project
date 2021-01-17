@@ -34,6 +34,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/encounters', tp.authenticateToken, encountersRouter);
 app.use('/api/auth', authRouter);
-app.use('/api/genre', homiecirclesRouter);
+app.use('/api/homiecircles', homiecirclesRouter);
 
 module.exports = app;

@@ -14,6 +14,10 @@ const HomieCircleSchema = new dynamoose.Schema(
       type: Set,
       schema: [User], // Set is only valid if `User` does not have a `rangeKey`
     },
+    genres: {
+      type: Set,
+      schema: [String]
+    },
   },
   {
     timestamps: {

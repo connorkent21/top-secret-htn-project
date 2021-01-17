@@ -5,10 +5,12 @@ const userModel = require('../models/users');
 
 router.post('/genre', async (req, res, next) => {
 
-  console.log("Hi");
+  console.log(req.body);
 
   const homieCircleID = req.body.homieCircleID;
   const genres = req.body.genres;
+
+  console.log(homieCircleID);
 
   const homieCircle = await homieCircleModel.query('id')
     .eq(homieCircleID)
@@ -21,6 +23,7 @@ router.post('/genre', async (req, res, next) => {
     res.status(404);
   }
 
+  console.log(homieCircle);
   homieCircle.genres = genres;
 
   // TODO add error checking

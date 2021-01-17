@@ -2,11 +2,11 @@
   "TableName": "homiecircles",
   "KeySchema": [
     {
-      "AttributeName": "Id",
+      "AttributeName": "id",
       "KeyType": "HASH"
     }
   ],
-  "AttributeDefinitions": [{ "AttributeName": "Id", "AttributeType": "S" }],
+  "AttributeDefinitions": [{ "AttributeName": "id", "AttributeType": "S" }],
   "ProvisionedThroughput": {
     "ReadCapacityUnits": 5,
     "WriteCapacityUnits": 5

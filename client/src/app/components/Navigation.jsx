@@ -8,6 +8,10 @@ import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import useUser from '../../hooks/useUser';
 
 import { makeStyles } from '@material-ui/core/styles';
+import Spaxios from '../../api/Spaxios';
+import {AddMovieGenres } from '../../api/homiecircles';
+
+const spaxios = new Spaxios();
 
 const styles = makeStyles((theme) => ({
   link: {
@@ -66,7 +70,9 @@ const Navigation = () => {
   const [user] = useUser();
   const classes = styles();
 
-  handleClick = () => {
+  const handleClick = () => {
+    let temp = AddMovieGenres("1", [1,2,3,4,5]);
+
     console.log('sicko mode');
   };
 

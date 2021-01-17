@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { Link, withRouter } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import useUser from '../../hooks/useUser';
+import SignupDialog from '../components/auth/SignupDialog';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -65,41 +66,48 @@ const Navigation = () => {
   const theme = useTheme();
   const [user] = useUser();
   const classes = styles();
+  const [signupDialogOpen, setSignupDialogOpen] = useState(false);
 
-  handleClick = () => {
-    console.log('sicko mode');
+  const handleClick = () => {
+    setSignupDialogOpen(true);
   };
 
   console.log('this is the user: ', user);
 
   return (
-    <AppBar position="absolute" color="default" elevation={0}>
-      <Toolbar>
-        <div className={classes.logoContainer}>
-          <div style={{ height: '42px', width: '42px' }}>
-            <Logo fill="#8C2F39" stroke={theme.palette.secondary} />
+    <>
+      <AppBar position="absolute" color="default" elevation={0}>
+        <Toolbar>
+          <div className={classes.logoContainer}>
+            <div style={{ height: '42px', width: '42px' }}>
+              <Logo fill="#8C2F39" stroke={theme.palette.secondary} />
+            </div>
+            <div
+              style={{ fontSize: '1.5rem', fontWeight: 600, color: '#8C2F39' }}
+            >
+              MovieMatchr
+            </div>
           </div>
-          <div
-            style={{ fontSize: '1.5rem', fontWeight: 600, color: '#8C2F39' }}
-          >
-            MovieMatchr
-          </div>
-        </div>
-        <nav>
-          <Link to={user ? '/' : '/login'} className={classes.link}>
-            <Button variant="text">{user ? 'Home' : 'Login'}</Button>
-          </Link>
-          <Link to="/support" className={classes.link}>
-            <Button variant="contained" color="primary">
-              Sign up
+          <nav>
+            <Link to={user ? '/' : '/login'} className={classes.link}>
+              <Button variant="text">{user ? 'Home' : 'Login'}</Button>
+            </Link>
+            <Link to="/support" className={classes.link}>
+              <Button variant="contained" color="primary">
+                Sign up
+              </Button>
+            </Link>
+            <Button variant="contained" color="primary" onClick={handleClick}>
+              TEST
             </Button>
-          </Link>
-          <Button variant="contained" color="primary" onClick={handleClick}>
-            TEST
-          </Button>
-        </nav>
-      </Toolbar>
-    </AppBar>
+          </nav>
+        </Toolbar>
+      </AppBar>
+      <SignupDialog
+        open={signupDialogOpen}
+        onClose={() => setSignupDialogOpen(false)}
+      />
+    </>
   );
 };
 

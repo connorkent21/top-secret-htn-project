@@ -7,8 +7,6 @@ const UserSchema = new dynamoose.Schema(
       type: String,
       hashKey: true,
     },
-    firstName: String,
-    lastName: String,
   },
   {
     timestamps: {

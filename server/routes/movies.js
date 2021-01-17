@@ -6,16 +6,21 @@ const tp = require('../middleware/TokenProcessor');
 const axios = require('axios').default;
 require('dotenv').config();
 
-router.post('/movieList', async(req, res, next) => {
-  const {id} = req.body;
+router.post('/movieList', async (req, res, next) => {
+  // // const {id} = req.body;
 
-  // Get the homieCircle object
-  // const homieCircle =
-  //     await HomieCircles.query('Id').eq(id).exec().catch(err => { next(err);
-  //     });
+  // id = 1;
+
+  // // Get the homieCircle object
+  // const homieCircle = await HomieCircles.query('Id')
+  //   .eq(id)
+  //   .exec()
+  //   .catch(err => {
+  //     next(err);
+  //   });
 
   // if (!homieCircle) {
-  //   // console.log("lol");
+  //   console.log('lol');
   //   res.status(404);
   // }
 
@@ -37,6 +42,7 @@ router.post('/movieList', async(req, res, next) => {
   //   page = 1;
   // }
   page = 1;
+
   let genres = new Set();
   genres.add(28);
   var genre = genres.values().next().value;
@@ -49,18 +55,20 @@ router.post('/movieList', async(req, res, next) => {
     const include_adult = false;
     const include_video = false;
 
-    const response =
-        await axios.get('https://api.themoviedb.org/3/discover/movie', {
-          params: {
-            api_key: process.env.MOVIE_TOKEN,
-            language: language,
-            sort_by: sort_by,
-            include_adult: include_adult,
-            include_video: include_video,
-            page: page,
-            with_genres: genre,
-          },
-        });
+    const response = await axios.get(
+      'https://api.themoviedb.org/3/discover/movie',
+      {
+        params: {
+          api_key: process.env.MOVIE_TOKEN,
+          language: language,
+          sort_by: sort_by,
+          include_adult: include_adult,
+          include_video: include_video,
+          page: page,
+          with_genres: genre,
+        },
+      }
+    );
     // .catch(error => {
     //   // handle error
     //   console.log(error);
